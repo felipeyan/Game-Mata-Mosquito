@@ -23,11 +23,17 @@ function gerarMosquito() {
   mosquito.style.left = posx + 'px';
   mosquito.style.top = posy + 'px';
   mosquito.style.position = 'absolute';
+  mosquito.style.transform = "scaleX(" + direcaoMosquito() + ")";
   document.body.appendChild(mosquito);
+  console.log(direcaoMosquito());
 }
 
 function tamanhoMosquito() {
   return Math.round(Math.random() * (3 - 1) + 1);
+}
+
+function direcaoMosquito() {
+  return Math.round(Math.random() < 0.5 ? -1:1);
 }
 
 tamanhoTela();
