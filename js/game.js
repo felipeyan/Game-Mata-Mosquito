@@ -10,22 +10,25 @@ function tamanhoTela() {
 function randomPos() {
   posx = Math.round(Math.random() * largura) - 90;
   posy = Math.round(Math.random() * altura) - 90;
-
   posx = posx < 0?0:posx;
   posy = posy < 0?0:posy;
-  // console.log(posx, posy);
+
+  return posx + "px, " + posy;
 }
 
 function gerarMosquito() {
+  if (document.getElementById('tempoMosquito')) {
+    document.getElementById('tempoMosquito').remove();
+  }
+
   mosquito = document.createElement('img');
   mosquito.src = 'imagens/mosca.png';
   mosquito.className = 'mosq0' + tamanhoMosquito();
-  mosquito.style.left = posx + 'px';
-  mosquito.style.top = posy + 'px';
   mosquito.style.position = 'absolute';
-  mosquito.style.transform = "scaleX(" + direcaoMosquito() + ")";
+  mosquito.style.transform = "translate(" + randomPos() + "px) scaleX(" + direcaoMosquito() + ")";
+  console.log(mosquito.style.top, mosquito.style.left);
+  mosquito.id = 'tempoMosquito';
   document.body.appendChild(mosquito);
-  console.log(direcaoMosquito());
 }
 
 function tamanhoMosquito() {
@@ -38,4 +41,4 @@ function direcaoMosquito() {
 
 tamanhoTela();
 
-document.addEventListener("DOMContentLoaded", gerarMosquito);
+// document.addEventListener("DOMContentLoaded", gerarMosquito);
