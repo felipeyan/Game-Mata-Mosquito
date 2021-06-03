@@ -1,6 +1,7 @@
 altura = 0;
 largura = 0;
 vidas = 1;
+tempo = 15;
 
 function tamanhoTela() {
   altura = window.innerHeight;
@@ -50,5 +51,15 @@ function direcaoMosquito() {
 }
 
 tamanhoTela();
+resetarTempo = setInterval(function() {
+  tempo -= 1;
+  if (tempo < 0) {
+    clearInterval(resetarTempo);
+    clearInterval(criarMosquitos);
+    alert("Você venceu!");
+  } else {
+    document.getElementById('tempoJogo').innerHTML = tempo;
+  }
+}, 1000);
 
 // document.addEventListener("DOMContentLoaded", gerarMosquito);

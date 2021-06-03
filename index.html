@@ -14,11 +14,12 @@
         <img id="v3" draggable="false" src="imagens/coracao_cheio.png">
       </div>
       <div class="cronometro">
-        Tempo restante: ?
+        Tempo restante: <span id="tempoJogo"></span>
       </div>
     </div>
     <script>
-      setInterval(() => {
+      document.getElementById('tempoJogo').innerHTML = tempo;
+      criarMosquitos = setInterval(() => {
         gerarMosquito();
       }, 2000);
     </script>
