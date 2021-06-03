@@ -9,9 +9,9 @@
   <body onresize="tamanhoTela()">
     <div class="painel">
       <div class="vidas">
-        <img draggable="false" src="imagens/coracao_vazio.png">
-        <img draggable="false" src="imagens/coracao_cheio.png">
-        <img draggable="false" src="imagens/coracao_cheio.png">
+        <img id="v1" draggable="false" src="imagens/coracao_cheio.png">
+        <img id="v2" draggable="false" src="imagens/coracao_cheio.png">
+        <img id="v3" draggable="false" src="imagens/coracao_cheio.png">
       </div>
       <div class="cronometro">
         Tempo restante: ?
@@ -20,7 +20,7 @@
     <script>
       setInterval(() => {
         gerarMosquito();
-      }, 500);
+      }, 2000);
     </script>
   </body>
 </html>
