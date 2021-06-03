@@ -19,11 +19,15 @@ function randomPos() {
 function gerarMosquito() {
   mosquito = document.createElement('img');
   mosquito.src = 'imagens/mosca.png';
-  mosquito.className = 'mosq01';
+  mosquito.className = 'mosq0' + tamanhoMosquito();
   mosquito.style.left = posx + 'px';
   mosquito.style.top = posy + 'px';
   mosquito.style.position = 'absolute';
   document.body.appendChild(mosquito);
+}
+
+function tamanhoMosquito() {
+  return Math.round(Math.random() * (3 - 1) + 1);
 }
 
 tamanhoTela();
