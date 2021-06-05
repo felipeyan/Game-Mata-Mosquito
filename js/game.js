@@ -1,7 +1,22 @@
 altura = 0;
 largura = 0;
 vidas = 1;
-tempo = 15;
+
+function dificuldadeJogo() {
+  nivel = window.location.search.replace('?', '');
+
+  switch (nivel) {
+    case 'normal':
+      tempo = 15;
+    break;
+    case 'dificil':
+      tempo = 10;
+    break;
+    case 'impossivel':
+      tempo = 7.5;
+    break;
+  }
+}
 
 function tamanhoTela() {
   altura = window.innerHeight;
@@ -25,7 +40,9 @@ function gerarMosquito() {
     if (vidas > 3) {
       window.location.href = "game_over.html";
     } else {
-      document.getElementById('v' + vidas).src = "imagens/coracao_vazio.png";
+      vidaVazia = document.getElementById('v' + vidas);
+      vidaVazia.src = "imagens/coracao_vazio.png";
+      vidaVazia.draggable = false;
       vidas++;
     }
   }
@@ -36,6 +53,7 @@ function gerarMosquito() {
   mosquito.style.position = 'absolute';
   mosquito.style.transform = "translate(" + randomPos() + ") scaleX(" + direcaoMosquito() + ")";
   mosquito.id = 'tempoMosquito';
+  mosquito.draggable = false;
   mosquito.onclick = function () {
     this.remove();
   }
@@ -51,12 +69,14 @@ function direcaoMosquito() {
 }
 
 tamanhoTela();
+dificuldadeJogo();
+
 resetarTempo = setInterval(function() {
   tempo -= 1;
   if (tempo < 0) {
     clearInterval(resetarTempo);
     clearInterval(criarMosquitos);
-    alert("Você venceu!");
+    window.location.href = "vitoria.html";
   } else {
     document.getElementById('tempoJogo').innerHTML = tempo;
   }
